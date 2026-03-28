@@ -312,7 +312,7 @@ I&apos;ve made.
             </div>
             <div className="project-grid">
               {projects.map((project) => (
-                
+                <a
                   key={project.id}
                   href={project.url}
                   className="project-card"
