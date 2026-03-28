@@ -29,9 +29,11 @@ export default function Home() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Nunito:wght@300;400;500;600&display=swap');
+        @import 
+url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Nunito:wght@300;400;500;600&display=swap');
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; 
+padding: 0; }
 
         body {
           background-color: #fdf8f3;
@@ -176,7 +178,8 @@ export default function Home() {
           border: 1px solid #ede5d8;
           border-radius: 16px;
           padding: 2rem;
-          transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+          transition: transform 0.25s ease, box-shadow 0.25s ease, 
+border-color 0.25s ease;
           position: relative;
           overflow: hidden;
         }
@@ -297,7 +300,8 @@ export default function Home() {
               Sarah<br /><em>Hynds</em>
             </h1>
             <p className="hero-bio">
-              MBA candidate at Wharton. Here&apos;s a collection of things I&apos;ve made.
+              MBA candidate at Wharton. Here&apos;s a collection of things 
+I&apos;ve made.
             </p>
           </section>
 
@@ -329,7 +333,8 @@ export default function Home() {
 
           <footer className="footer">
             <span className="footer-left">Sarah Hynds</span>
-            <span className="footer-right">Built with love · {new Date().getFullYear()}</span>
+            <span className="footer-right">Built with love · {new 
+Date().getFullYear()}</span>
           </footer>
         </div>
       </div>
