@@ -1,11 +1,27 @@
+"use client";
+
+import { useState } from "react";
+
 const projects = [
   {
     id: 1,
-    title: "Coming Soon",
-    description: "My next vibe coding project. Stay tuned.",
-    tag: "In Progress",
-    url: "#",
+    title: "Spotted NYC",
+    description: "A celebrity sighting tracker for NYC restaurants, powered by Reddit and AI.",
+    tag: "Live",
+    url: "https://spotted-nyc.vercel.app/",
     emoji: "✦",
+    detail: {
+      screenshot: "/spotted-nyc-hero.png",
+      overview: "Spotted NYC scrapes celebrity sighting posts from Reddit (r/DeuxMoi), uses Claude AI to extract the restaurant and celebrity mentioned, then surfaces a live feed of where celebs have been spotted around New York City.",
+      stack: [
+        { label: "Frontend", value: "React + Vite" },
+        { label: "Backend", value: "Node.js + Express" },
+        { label: "AI", value: "Claude (Anthropic) — sighting extraction" },
+        { label: "Database", value: "Supabase (Postgres)" },
+        { label: "Data", value: "Reddit via snoowrap + web scraping via Cheerio" },
+        { label: "Scheduler", value: "node-cron for automated pipeline runs" },
+      ],
+    },
   },
   {
     id: 2,
@@ -14,6 +30,7 @@ const projects = [
     tag: "In Progress",
     url: "#",
     emoji: "✦",
+    detail: null,
   },
   {
     id: 3,
@@ -22,10 +39,14 @@ const projects = [
     tag: "In Progress",
     url: "#",
     emoji: "✦",
+    detail: null,
   },
 ];
 
+type Project = typeof projects[number];
+
 export default function Home() {
+  const [modal, setModal] = useState<Project | null>(null);
   return (
     <>
       <style>{`
@@ -85,6 +106,29 @@ padding: 0; }
         .hero {
           padding: 5rem 0;
           border-bottom: 1px solid #ede5d8;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 3rem;
+        }
+
+        .hero-content {
+          flex: 1;
+        }
+
+        .hero-photo {
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          object-fit: cover;
+          object-position: center top;
+          border: 3px solid #ede5d8;
+          flex-shrink: 0;
+        }
+
+        @media (max-width: 600px) {
+          .hero { flex-direction: column-reverse; align-items: flex-start; }
+          .hero-photo { width: 120px; height: 120px; }
         }
 
         .hero-tag {
@@ -159,7 +203,8 @@ padding: 0; }
         }
 
         .section-line {
-          flex: 1;
+          width: 40px;
+          flex: none;
           height: 1px;
           background: #ede5d8;
         }
@@ -280,6 +325,124 @@ border-color 0.25s ease;
         @media (max-width: 600px) {
           .container { padding: 0 1.5rem; }
         }
+
+        .modal-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(45, 36, 22, 0.5);
+          backdrop-filter: blur(4px);
+          z-index: 100;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 1.5rem;
+        }
+
+        .modal {
+          background: #fdf8f3;
+          border-radius: 20px;
+          max-width: 640px;
+          width: 100%;
+          max-height: 90vh;
+          overflow-y: auto;
+          border: 1px solid #ede5d8;
+          box-shadow: 0 24px 64px rgba(45, 36, 22, 0.2);
+        }
+
+        .modal-screenshot {
+          width: 100%;
+          border-radius: 16px 16px 0 0;
+          display: block;
+          object-fit: cover;
+          max-height: 280px;
+        }
+
+        .modal-body {
+          padding: 2rem;
+        }
+
+        .modal-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-bottom: 1rem;
+        }
+
+        .modal-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.6rem;
+          font-weight: 700;
+          color: #2d2416;
+        }
+
+        .modal-close {
+          background: none;
+          border: none;
+          font-size: 1.4rem;
+          color: #b8a898;
+          cursor: pointer;
+          padding: 0;
+          line-height: 1;
+          transition: color 0.2s;
+        }
+
+        .modal-close:hover { color: #c17a3a; }
+
+        .modal-overview {
+          font-size: 0.95rem;
+          color: #7a6a58;
+          line-height: 1.75;
+          margin-bottom: 1.5rem;
+        }
+
+        .modal-stack-label {
+          font-size: 0.7rem;
+          font-weight: 600;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #b8a898;
+          margin-bottom: 0.75rem;
+        }
+
+        .modal-stack {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          margin-bottom: 1.75rem;
+        }
+
+        .modal-stack-row {
+          display: flex;
+          gap: 0.75rem;
+          font-size: 0.875rem;
+        }
+
+        .modal-stack-key {
+          color: #b8a898;
+          min-width: 90px;
+          font-weight: 500;
+        }
+
+        .modal-stack-val {
+          color: #2d2416;
+        }
+
+        .modal-visit {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          background: #c17a3a;
+          color: #fff;
+          font-size: 0.85rem;
+          font-weight: 600;
+          letter-spacing: 0.04em;
+          padding: 10px 20px;
+          border-radius: 24px;
+          text-decoration: none;
+          transition: background 0.2s;
+        }
+
+        .modal-visit:hover { background: #a8662e; }
       `}</style>
 
       <div className="page">
@@ -292,17 +455,19 @@ border-color 0.25s ease;
           </header>
 
           <section className="hero">
-            <div className="hero-tag">
-              <span className="hero-tag-dot"></span>
-              Vibe Coding Projects
+            <div className="hero-content">
+              <div className="hero-tag">
+                <span className="hero-tag-dot"></span>
+                Vibe Coding Projects
+              </div>
+              <h1 className="hero-name">
+                Sarah<br /><em>Hynds</em>
+              </h1>
+              <p className="hero-bio">
+                MBA candidate at Wharton. Here&apos;s a collection of things I&apos;ve made.
+              </p>
             </div>
-            <h1 className="hero-name">
-              Sarah<br /><em>Hynds</em>
-            </h1>
-            <p className="hero-bio">
-              MBA candidate at Wharton. Here&apos;s a collection of things 
-I&apos;ve made.
-            </p>
+            <img src="/headshot.jpeg" alt="Sarah Hynds" className="hero-photo" />
           </section>
 
           <section className="projects-section">
@@ -312,32 +477,58 @@ I&apos;ve made.
             </div>
             <div className="project-grid">
               {projects.map((project) => (
-                <a
+                <div
                   key={project.id}
-                  href={project.url}
                   className="project-card"
-                  target={project.url !== "#" ? "_blank" : undefined}
-                  rel="noreferrer"
+                  onClick={() => project.detail && setModal(project)}
+                  style={{ cursor: project.detail ? "pointer" : "default" }}
                 >
                   <span className="project-emoji">{project.emoji}</span>
                   <div className="project-card-top">
                     <span className="project-tag">{project.tag}</span>
-                    <span className="project-arrow">↗</span>
+                    <span className="project-arrow">{project.detail ? "↗" : ""}</span>
                   </div>
                   <h2 className="project-title">{project.title}</h2>
                   <p className="project-desc">{project.description}</p>
-                </a>
+                </div>
               ))}
             </div>
           </section>
 
           <footer className="footer">
             <span className="footer-left">Sarah Hynds</span>
-            <span className="footer-right">Built with love · {new 
+            <span className="footer-right">Built with love · {new
 Date().getFullYear()}</span>
           </footer>
         </div>
       </div>
+
+      {modal && modal.detail && (
+        <div className="modal-overlay" onClick={() => setModal(null)}>
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <img src={modal.detail.screenshot} alt={modal.title} className="modal-screenshot" />
+            <div className="modal-body">
+              <div className="modal-header">
+                <h2 className="modal-title">{modal.title}</h2>
+                <button className="modal-close" onClick={() => setModal(null)}>✕</button>
+              </div>
+              <p className="modal-overview">{modal.detail.overview}</p>
+              <div className="modal-stack-label">Tech Stack</div>
+              <div className="modal-stack">
+                {modal.detail.stack.map((row) => (
+                  <div key={row.label} className="modal-stack-row">
+                    <span className="modal-stack-key">{row.label}</span>
+                    <span className="modal-stack-val">{row.value}</span>
+                  </div>
+                ))}
+              </div>
+              <a href={modal.url} target="_blank" rel="noreferrer" className="modal-visit">
+                Visit site ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
