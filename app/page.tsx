@@ -284,14 +284,9 @@ border-color 0.25s ease;
         }
 
         .project-iframe-inner iframe {
-          width: 100%;
+          width: calc(100% + 20px);
           height: 100%;
           border: none;
-          scrollbar-width: none;
-        }
-
-        .project-iframe-inner iframe::-webkit-scrollbar {
-          display: none;
         }
 
         .project-card::before {
@@ -456,7 +451,7 @@ border-color 0.25s ease;
         }
 
         .modal-iframe-inner iframe {
-          width: 100%;
+          width: calc(100% + 20px);
           height: 100%;
           border: none;
         }
