@@ -249,6 +249,8 @@ border-color 0.25s ease;
           overflow: hidden;
           border-bottom: 1px solid #ede5d8;
           position: relative;
+          display: flex;
+          justify-content: center;
         }
 
         .project-iframe-wrapper::after {
@@ -267,15 +269,15 @@ border-color 0.25s ease;
           width: 375px;
           height: 812px;
           transform: scale(0.52);
-          transform-origin: top left;
+          transform-origin: top center;
           pointer-events: none;
-          animation: scrollPreview 12s ease-in-out infinite;
+          animation: scrollPreview 20s ease-in-out infinite;
         }
 
         @keyframes scrollPreview {
-          0%, 10% { transform: scale(0.52) translateY(0); }
-          45%, 55% { transform: scale(0.52) translateY(-400px); }
-          90%, 100% { transform: scale(0.52) translateY(0); }
+          0%, 12% { transform: scale(0.52) translateY(0); }
+          44%, 56% { transform: scale(0.52) translateY(-400px); }
+          88%, 100% { transform: scale(0.52) translateY(0); }
         }
 
         .project-iframe-inner iframe {
@@ -418,6 +420,8 @@ border-color 0.25s ease;
           overflow: hidden;
           border-radius: 16px 16px 0 0;
           position: relative;
+          display: flex;
+          justify-content: center;
         }
 
         .modal-iframe-wrapper::after {
@@ -436,15 +440,8 @@ border-color 0.25s ease;
           width: 375px;
           height: 812px;
           transform: scale(1.71);
-          transform-origin: top left;
+          transform-origin: top center;
           pointer-events: none;
-          animation: scrollPreviewModal 12s ease-in-out infinite;
-        }
-
-        @keyframes scrollPreviewModal {
-          0%, 10% { transform: scale(1.71) translateY(0); }
-          45%, 55% { transform: scale(1.71) translateY(-200px); }
-          90%, 100% { transform: scale(1.71) translateY(0); }
         }
 
         .modal-iframe-inner iframe {
