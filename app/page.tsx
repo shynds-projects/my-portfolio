@@ -109,7 +109,7 @@ padding: 0; }
         .nav a:hover { color: #c17a3a; }
 
         .hero {
-          padding: 5rem 0;
+          padding: 5rem 0 2rem;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -202,7 +202,7 @@ padding: 0; }
           font-family: 'Playfair Display', serif;
           font-size: 1.4rem;
           font-weight: 700;
-          color: #2d2416;
+          color: #8a7a68;
           white-space: nowrap;
         }
 
