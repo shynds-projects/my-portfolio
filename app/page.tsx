@@ -271,7 +271,7 @@ border-color 0.25s ease;
         .project-iframe-inner {
           width: 375px;
           height: 812px;
-          transform: scale(0.82) translateY(-45px);
+          transform: scale(0.82) translateY(-36px);
           transform-origin: top center;
           pointer-events: none;
           animation: scrollPreview 24s ease-in-out infinite;
@@ -280,9 +280,9 @@ border-color 0.25s ease;
         }
 
         @keyframes scrollPreview {
-          0%, 10% { transform: scale(0.82) translateY(-45px); }
+          0%, 10% { transform: scale(0.82) translateY(-36px); }
           42%, 58% { transform: scale(0.82) translateY(-560px); }
-          90%, 100% { transform: scale(0.82) translateY(-45px); }
+          90%, 100% { transform: scale(0.82) translateY(-36px); }
         }
 
         .project-iframe-inner iframe {
