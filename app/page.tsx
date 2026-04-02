@@ -110,7 +110,6 @@ padding: 0; }
 
         .hero {
           padding: 5rem 0;
-          border-bottom: 1px solid #ede5d8;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -565,7 +564,7 @@ border-color 0.25s ease;
                 Vibe Coding Projects
               </div>
               <h1 className="hero-name">
-                Sarah <em>Hynds</em>
+                Sarah<br /><em>Hynds</em>
               </h1>
               <p className="hero-bio">
                 MBA candidate at Wharton. Here&apos;s a collection of things I&apos;ve made.
