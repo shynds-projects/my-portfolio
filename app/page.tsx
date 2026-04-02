@@ -554,7 +554,7 @@ border-color 0.25s ease;
             <nav className="nav">
               <a href="https://github.com/shynds-projects" target="_blank" rel="noreferrer">GitHub</a>
               <a href="https://www.linkedin.com/in/sarah-hynds/" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a href="mailto:hello@sarahhynds.com">Contact</a>
+              <a href="mailto:shynds23@gmail.com">Contact</a>
             </nav>
           </header>
 
@@ -565,7 +565,7 @@ border-color 0.25s ease;
                 Vibe Coding Projects
               </div>
               <h1 className="hero-name">
-                Sarah<br /><em>Hynds</em>
+                Sarah <em>Hynds</em>
               </h1>
               <p className="hero-bio">
                 MBA candidate at Wharton. Here&apos;s a collection of things I&apos;ve made.
