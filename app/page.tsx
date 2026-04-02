@@ -245,9 +245,9 @@ border-color 0.25s ease;
 
         .project-iframe-wrapper {
           width: 100%;
-          height: 200px;
+          height: 240px;
           overflow: hidden;
-          border-bottom: 1px solid #ede5d8;
+          border-top: 1px solid #ede5d8;
           position: relative;
           display: flex;
           justify-content: center;
@@ -269,7 +269,7 @@ border-color 0.25s ease;
         .project-iframe-inner {
           width: 375px;
           height: 812px;
-          transform: scale(0.52);
+          transform: scale(0.75);
           transform-origin: top center;
           pointer-events: none;
           animation: scrollPreview 24s ease-in-out infinite;
@@ -278,15 +278,20 @@ border-color 0.25s ease;
         }
 
         @keyframes scrollPreview {
-          0%, 10% { transform: scale(0.52) translateY(0); }
-          42%, 58% { transform: scale(0.52) translateY(-780px); }
-          90%, 100% { transform: scale(0.52) translateY(0); }
+          0%, 10% { transform: scale(0.75) translateY(0); }
+          42%, 58% { transform: scale(0.75) translateY(-780px); }
+          90%, 100% { transform: scale(0.75) translateY(0); }
         }
 
         .project-iframe-inner iframe {
           width: 100%;
           height: 100%;
           border: none;
+          scrollbar-width: none;
+        }
+
+        .project-iframe-inner iframe::-webkit-scrollbar {
+          display: none;
         }
 
         .project-card::before {
@@ -582,6 +587,15 @@ border-color 0.25s ease;
                   onClick={() => project.detail && setModal(project)}
                   style={{ cursor: project.detail ? "pointer" : "default" }}
                 >
+                  <div className="project-card-inner">
+                    <span className="project-emoji">{project.emoji}</span>
+                    <div className="project-card-top">
+                      <span className="project-tag">{project.tag}</span>
+                      <span className="project-arrow">{project.detail ? "↗" : ""}</span>
+                    </div>
+                    <h2 className="project-title">{project.title}</h2>
+                    <p className="project-desc">{project.description}</p>
+                  </div>
                   {project.url && project.url !== "#" && project.detail ? (
                     <div className="project-iframe-wrapper">
                       <div className="project-iframe-inner">
@@ -600,15 +614,6 @@ border-color 0.25s ease;
                       className="project-thumbnail"
                     />
                   ) : null}
-                  <div className="project-card-inner">
-                    <span className="project-emoji">{project.emoji}</span>
-                    <div className="project-card-top">
-                      <span className="project-tag">{project.tag}</span>
-                      <span className="project-arrow">{project.detail ? "↗" : ""}</span>
-                    </div>
-                    <h2 className="project-title">{project.title}</h2>
-                    <p className="project-desc">{project.description}</p>
-                  </div>
                 </div>
               ))}
             </div>
