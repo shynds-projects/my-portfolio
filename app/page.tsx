@@ -122,8 +122,9 @@ padding: 0; }
           border-radius: 50%;
           object-fit: cover;
           object-position: center top;
-          border: 3px solid #ede5d8;
           flex-shrink: 0;
+          margin-right: 2rem;
+          box-shadow: 0 0 0 4px #fdf8f3, 0 0 0 7px #c17a3a, 0 8px 24px rgba(193,122,58,0.15);
         }
 
         @media (max-width: 600px) {
@@ -222,11 +223,24 @@ padding: 0; }
           background: #fff;
           border: 1px solid #ede5d8;
           border-radius: 16px;
-          padding: 2rem;
-          transition: transform 0.25s ease, box-shadow 0.25s ease, 
+          padding: 0;
+          transition: transform 0.25s ease, box-shadow 0.25s ease,
 border-color 0.25s ease;
           position: relative;
           overflow: hidden;
+        }
+
+        .project-card-inner {
+          padding: 2rem;
+        }
+
+        .project-thumbnail {
+          width: 100%;
+          height: 160px;
+          object-fit: cover;
+          object-position: center top;
+          display: block;
+          border-bottom: 1px solid #ede5d8;
         }
 
         .project-card::before {
@@ -483,13 +497,22 @@ border-color 0.25s ease;
                   onClick={() => project.detail && setModal(project)}
                   style={{ cursor: project.detail ? "pointer" : "default" }}
                 >
-                  <span className="project-emoji">{project.emoji}</span>
-                  <div className="project-card-top">
-                    <span className="project-tag">{project.tag}</span>
-                    <span className="project-arrow">{project.detail ? "↗" : ""}</span>
+                  {project.detail?.screenshot && (
+                    <img
+                      src={project.detail.screenshot}
+                      alt={project.title}
+                      className="project-thumbnail"
+                    />
+                  )}
+                  <div className="project-card-inner">
+                    <span className="project-emoji">{project.emoji}</span>
+                    <div className="project-card-top">
+                      <span className="project-tag">{project.tag}</span>
+                      <span className="project-arrow">{project.detail ? "↗" : ""}</span>
+                    </div>
+                    <h2 className="project-title">{project.title}</h2>
+                    <p className="project-desc">{project.description}</p>
                   </div>
-                  <h2 className="project-title">{project.title}</h2>
-                  <p className="project-desc">{project.description}</p>
                 </div>
               ))}
             </div>
