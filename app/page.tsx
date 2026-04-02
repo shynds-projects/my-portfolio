@@ -461,13 +461,14 @@ border-color 0.25s ease;
 
         .modal-iframe-wrapper {
           width: 100%;
-          height: 320px;
+          height: 260px;
           overflow: hidden;
-          border-radius: 16px 16px 0 0;
+          border-radius: 0 0 20px 20px;
+          border-top: 1px solid #ede5d8;
           position: relative;
           display: flex;
           justify-content: center;
-          background: #fdf8f3;
+          background: #fff;
         }
 
         .modal-iframe-wrapper::after {
@@ -477,7 +478,7 @@ border-color 0.25s ease;
           left: 0;
           right: 0;
           height: 40px;
-          background: linear-gradient(transparent, #fdf8f3);
+          background: linear-gradient(transparent, #fff);
           pointer-events: none;
           z-index: 2;
         }
@@ -485,11 +486,21 @@ border-color 0.25s ease;
         .modal-iframe-inner {
           width: 375px;
           height: 812px;
-          transform: scale(1.71);
+          transform: scale(0.82) translateY(-36px);
           transform-origin: top center;
           pointer-events: none;
           border-radius: 20px;
           overflow: hidden;
+        }
+
+        .modal-iframe-scroll {
+          animation: scrollPreviewModal 32s ease-in-out infinite;
+        }
+
+        @keyframes scrollPreviewModal {
+          0%, 10% { transform: scale(0.82) translateY(-36px); }
+          42%, 58% { transform: scale(0.82) translateY(-560px); }
+          90%, 100% { transform: scale(0.82) translateY(-36px); }
         }
 
         .modal-iframe-inner iframe {
@@ -675,20 +686,6 @@ Date().getFullYear()}</span>
       {modal && modal.detail && (
         <div className="modal-overlay" onClick={() => setModal(null)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
-            {modal.url && modal.url !== "#" ? (
-              <div className="modal-iframe-wrapper">
-                <div className="modal-iframe-inner">
-                  <iframe
-                    src={modal.url}
-                    title={modal.title}
-                    loading="lazy"
-                    tabIndex={-1}
-                  />
-                </div>
-              </div>
-            ) : modal.detail.screenshot ? (
-              <img src={modal.detail.screenshot} alt={modal.title} className="modal-screenshot" />
-            ) : null}
             <div className="modal-body">
               <div className="modal-header">
                 <h2 className="modal-title">{modal.title}</h2>
@@ -708,6 +705,20 @@ Date().getFullYear()}</span>
                 Visit site ↗
               </a>
             </div>
+            {modal.url && modal.url !== "#" ? (
+              <div className="modal-iframe-wrapper">
+                <div className="modal-iframe-inner modal-iframe-scroll">
+                  <iframe
+                    src={modal.url}
+                    title={modal.title}
+                    loading="lazy"
+                    tabIndex={-1}
+                  />
+                </div>
+              </div>
+            ) : modal.detail.screenshot ? (
+              <img src={modal.detail.screenshot} alt={modal.title} className="modal-screenshot" />
+            ) : null}
           </div>
         </div>
       )}
