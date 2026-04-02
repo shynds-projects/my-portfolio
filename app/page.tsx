@@ -401,19 +401,20 @@ border-color 0.25s ease;
           top: 2rem;
           left: 50%;
           transform: translateX(-50%);
-          background: #2d2416;
-          color: #fff;
-          padding: 12px 24px;
-          border-radius: 12px;
-          font-size: 0.9rem;
+          background: #fff;
+          color: #2d2416;
+          padding: 14px 28px;
+          border-radius: 16px;
+          font-size: 0.95rem;
           font-weight: 500;
           z-index: 200;
           animation: toastIn 0.3s ease, toastOut 0.3s ease 1.7s forwards;
-          box-shadow: 0 8px 24px rgba(45, 36, 22, 0.25);
+          box-shadow: 0 8px 32px rgba(193, 122, 58, 0.15), 0 2px 8px rgba(0,0,0,0.06);
+          border: 1px solid #ede5d8;
         }
 
         .email-toast span {
-          color: #e8a86b;
+          color: #c17a3a;
           font-weight: 600;
         }
 
@@ -667,7 +668,7 @@ Date().getFullYear()}</span>
 
       {showCopied && (
         <div className="email-toast">
-          <span>shynds23@gmail.com</span> — copied!
+          🥂 <span>shynds23@gmail.com</span> — copied!
         </div>
       )}
 
