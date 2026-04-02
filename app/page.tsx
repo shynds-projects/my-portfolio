@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 const projects = [
   {
@@ -47,6 +47,14 @@ type Project = typeof projects[number];
 
 export default function Home() {
   const [modal, setModal] = useState<Project | null>(null);
+  const [showCopied, setShowCopied] = useState(false);
+
+  const handleCopyEmail = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    navigator.clipboard.writeText("shynds23@gmail.com");
+    setShowCopied(true);
+    setTimeout(() => setShowCopied(false), 2000);
+  }, []);
   return (
     <>
       <style>{`
@@ -388,6 +396,37 @@ border-color 0.25s ease;
           .container { padding: 0 1.5rem; }
         }
 
+        .email-toast {
+          position: fixed;
+          top: 2rem;
+          left: 50%;
+          transform: translateX(-50%);
+          background: #2d2416;
+          color: #fff;
+          padding: 12px 24px;
+          border-radius: 12px;
+          font-size: 0.9rem;
+          font-weight: 500;
+          z-index: 200;
+          animation: toastIn 0.3s ease, toastOut 0.3s ease 1.7s forwards;
+          box-shadow: 0 8px 24px rgba(45, 36, 22, 0.25);
+        }
+
+        .email-toast span {
+          color: #e8a86b;
+          font-weight: 600;
+        }
+
+        @keyframes toastIn {
+          from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+          to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        @keyframes toastOut {
+          from { opacity: 1; transform: translateX(-50%) translateY(0); }
+          to { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+        }
+
         .modal-overlay {
           position: fixed;
           inset: 0;
@@ -553,7 +592,7 @@ border-color 0.25s ease;
             <nav className="nav">
               <a href="https://github.com/shynds-projects" target="_blank" rel="noreferrer">GitHub</a>
               <a href="https://www.linkedin.com/in/sarah-hynds/" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a href="mailto:shynds23@gmail.com">Contact</a>
+              <a href="#" onClick={handleCopyEmail}>Contact</a>
             </nav>
           </header>
 
@@ -625,6 +664,12 @@ Date().getFullYear()}</span>
           </footer>
         </div>
       </div>
+
+      {showCopied && (
+        <div className="email-toast">
+          <span>shynds23@gmail.com</span> — copied!
+        </div>
+      )}
 
       {modal && modal.detail && (
         <div className="modal-overlay" onClick={() => setModal(null)}>
