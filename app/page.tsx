@@ -274,7 +274,7 @@ border-color 0.25s ease;
         .project-iframe-inner {
           width: 375px;
           height: 812px;
-          transform: scale(0.75);
+          transform: scale(0.82);
           transform-origin: top center;
           pointer-events: none;
           animation: scrollPreview 24s ease-in-out infinite;
@@ -283,13 +283,13 @@ border-color 0.25s ease;
         }
 
         @keyframes scrollPreview {
-          0%, 10% { transform: scale(0.75) translateY(0); }
-          42%, 58% { transform: scale(0.75) translateY(-780px); }
-          90%, 100% { transform: scale(0.75) translateY(0); }
+          0%, 10% { transform: scale(0.82) translateY(0); }
+          42%, 58% { transform: scale(0.82) translateY(-780px); }
+          90%, 100% { transform: scale(0.82) translateY(0); }
         }
 
         .project-iframe-inner iframe {
-          width: calc(100% + 20px);
+          width: calc(100% + 40px);
           height: 100%;
           border: none;
         }
@@ -456,7 +456,7 @@ border-color 0.25s ease;
         }
 
         .modal-iframe-inner iframe {
-          width: calc(100% + 20px);
+          width: calc(100% + 40px);
           height: 100%;
           border: none;
         }
