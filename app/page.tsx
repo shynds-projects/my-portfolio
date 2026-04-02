@@ -197,21 +197,18 @@ padding: 0; }
           align-items: center;
           gap: 1rem;
           margin-bottom: 2.5rem;
-          flex-wrap: nowrap;
         }
 
         .section-label {
-          font-size: 0.75rem;
-          font-weight: 600;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          color: #b8a898;
+          font-family: 'Playfair Display', serif;
+          font-size: 1.4rem;
+          font-weight: 700;
+          color: #2d2416;
           white-space: nowrap;
         }
 
         .section-line {
-          width: 40px;
-          flex: none;
+          flex: 1;
           height: 1px;
           background: #ede5d8;
         }
