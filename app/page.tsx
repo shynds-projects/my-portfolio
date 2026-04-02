@@ -97,9 +97,9 @@ padding: 0; }
         }
 
         .nav a {
-          font-size: 0.85rem;
-          font-weight: 500;
-          color: #8a7060;
+          font-size: 1rem;
+          font-weight: 600;
+          color: #5a4a3a;
           text-decoration: none;
           letter-spacing: 0.06em;
           text-transform: uppercase;
@@ -197,6 +197,7 @@ padding: 0; }
           align-items: center;
           gap: 1rem;
           margin-bottom: 2.5rem;
+          flex-wrap: nowrap;
         }
 
         .section-label {
