@@ -91,6 +91,11 @@ padding: 0; }
           text-decoration: none;
         }
 
+        .nav {
+          display: flex;
+          gap: 1.5rem;
+        }
+
         .nav a {
           font-size: 0.85rem;
           font-weight: 500;
@@ -549,6 +554,8 @@ border-color 0.25s ease;
           <header className="header">
             <a href="/" className="logo">sh.</a>
             <nav className="nav">
+              <a href="https://github.com/shynds-projects" target="_blank" rel="noreferrer">GitHub</a>
+              <a href="https://www.linkedin.com/in/sarah-hynds/" target="_blank" rel="noreferrer">LinkedIn</a>
               <a href="mailto:hello@sarahhynds.com">Contact</a>
             </nav>
           </header>
