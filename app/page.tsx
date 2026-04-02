@@ -494,7 +494,7 @@ border-color 0.25s ease;
         }
 
         .modal-iframe-scroll {
-          animation: scrollPreviewModal 32s ease-in-out infinite;
+          animation: scrollPreviewModal 28s ease-in-out infinite;
         }
 
         @keyframes scrollPreviewModal {
