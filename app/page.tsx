@@ -243,6 +243,47 @@ border-color 0.25s ease;
           border-bottom: 1px solid #ede5d8;
         }
 
+        .project-iframe-wrapper {
+          width: 100%;
+          height: 200px;
+          overflow: hidden;
+          border-bottom: 1px solid #ede5d8;
+          position: relative;
+        }
+
+        .project-iframe-wrapper::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 40px;
+          background: linear-gradient(transparent, #fff);
+          pointer-events: none;
+          z-index: 2;
+        }
+
+        .project-iframe-inner {
+          width: 375px;
+          height: 812px;
+          transform: scale(0.52);
+          transform-origin: top left;
+          pointer-events: none;
+          animation: scrollPreview 12s ease-in-out infinite;
+        }
+
+        @keyframes scrollPreview {
+          0%, 10% { transform: scale(0.52) translateY(0); }
+          45%, 55% { transform: scale(0.52) translateY(-400px); }
+          90%, 100% { transform: scale(0.52) translateY(0); }
+        }
+
+        .project-iframe-inner iframe {
+          width: 100%;
+          height: 100%;
+          border: none;
+        }
+
         .project-card::before {
           content: '';
           position: absolute;
@@ -371,6 +412,47 @@ border-color 0.25s ease;
           max-height: 280px;
         }
 
+        .modal-iframe-wrapper {
+          width: 100%;
+          height: 320px;
+          overflow: hidden;
+          border-radius: 16px 16px 0 0;
+          position: relative;
+        }
+
+        .modal-iframe-wrapper::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 40px;
+          background: linear-gradient(transparent, #fdf8f3);
+          pointer-events: none;
+          z-index: 2;
+        }
+
+        .modal-iframe-inner {
+          width: 375px;
+          height: 812px;
+          transform: scale(1.71);
+          transform-origin: top left;
+          pointer-events: none;
+          animation: scrollPreviewModal 12s ease-in-out infinite;
+        }
+
+        @keyframes scrollPreviewModal {
+          0%, 10% { transform: scale(1.71) translateY(0); }
+          45%, 55% { transform: scale(1.71) translateY(-200px); }
+          90%, 100% { transform: scale(1.71) translateY(0); }
+        }
+
+        .modal-iframe-inner iframe {
+          width: 100%;
+          height: 100%;
+          border: none;
+        }
+
         .modal-body {
           padding: 2rem;
         }
@@ -497,13 +579,24 @@ border-color 0.25s ease;
                   onClick={() => project.detail && setModal(project)}
                   style={{ cursor: project.detail ? "pointer" : "default" }}
                 >
-                  {project.detail?.screenshot && (
+                  {project.url && project.url !== "#" && project.detail ? (
+                    <div className="project-iframe-wrapper">
+                      <div className="project-iframe-inner">
+                        <iframe
+                          src={project.url}
+                          title={project.title}
+                          loading="lazy"
+                          tabIndex={-1}
+                        />
+                      </div>
+                    </div>
+                  ) : project.detail?.screenshot ? (
                     <img
                       src={project.detail.screenshot}
                       alt={project.title}
                       className="project-thumbnail"
                     />
-                  )}
+                  ) : null}
                   <div className="project-card-inner">
                     <span className="project-emoji">{project.emoji}</span>
                     <div className="project-card-top">
@@ -529,7 +622,20 @@ Date().getFullYear()}</span>
       {modal && modal.detail && (
         <div className="modal-overlay" onClick={() => setModal(null)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <img src={modal.detail.screenshot} alt={modal.title} className="modal-screenshot" />
+            {modal.url && modal.url !== "#" ? (
+              <div className="modal-iframe-wrapper">
+                <div className="modal-iframe-inner">
+                  <iframe
+                    src={modal.url}
+                    title={modal.title}
+                    loading="lazy"
+                    tabIndex={-1}
+                  />
+                </div>
+              </div>
+            ) : modal.detail.screenshot ? (
+              <img src={modal.detail.screenshot} alt={modal.title} className="modal-screenshot" />
+            ) : null}
             <div className="modal-body">
               <div className="modal-header">
                 <h2 className="modal-title">{modal.title}</h2>
