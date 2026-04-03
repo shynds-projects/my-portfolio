@@ -10,6 +10,7 @@ const projects = [
     tag: "Live",
     url: "https://spotted-nyc.vercel.app/",
     emoji: "✦",
+    deepScroll: false,
     detail: {
       screenshot: "/spotted-nyc-hero.png",
       overview: "Spotted NYC scrapes celebrity sighting posts from Reddit (r/DeuxMoi), uses Claude AI to extract the restaurant and celebrity mentioned, then surfaces a live feed of where celebs have been spotted around New York City.",
@@ -25,12 +26,22 @@ const projects = [
   },
   {
     id: 2,
-    title: "Coming Soon",
-    description: "Something fun is in the works.",
-    tag: "In Progress",
-    url: "#",
+    title: "fund.base",
+    description: "A free, AI-powered alternative to Crunchbase for researching VC-backed startups.",
+    tag: "Live",
+    url: "https://fund-base.vercel.app/company/figma",
     emoji: "✦",
-    detail: null,
+    deepScroll: true,
+    detail: {
+      screenshot: null,
+      overview: "fund.base is a free startup intelligence platform that lets you search and explore VC-backed companies. It uses AI to surface company profiles, funding data, founder bios, and organizational culture insights — all without a paid subscription.",
+      stack: [
+        { label: "Frontend", value: "Next.js + React" },
+        { label: "Styling", value: "Tailwind CSS" },
+        { label: "AI", value: "AI-powered company data extraction" },
+        { label: "Hosting", value: "Vercel" },
+      ],
+    },
   },
   {
     id: 3,
@@ -39,6 +50,7 @@ const projects = [
     tag: "In Progress",
     url: "#",
     emoji: "✦",
+    deepScroll: false,
     detail: null,
   },
 ];
@@ -287,10 +299,21 @@ border-color 0.25s ease;
           overflow: hidden;
         }
 
+        .project-iframe-inner.scroll-deep {
+          height: 2400px;
+          animation: scrollPreviewDeep 24s ease-in-out infinite;
+        }
+
         @keyframes scrollPreview {
           0%, 10% { transform: scale(0.82) translateY(-36px); }
           42%, 58% { transform: scale(0.82) translateY(-560px); }
           90%, 100% { transform: scale(0.82) translateY(-36px); }
+        }
+
+        @keyframes scrollPreviewDeep {
+          0%, 8% { transform: scale(0.82) translateY(-36px); }
+          45%, 55% { transform: scale(0.82) translateY(-2100px); }
+          92%, 100% { transform: scale(0.82) translateY(-36px); }
         }
 
         .project-iframe-inner iframe {
@@ -493,14 +516,28 @@ border-color 0.25s ease;
           overflow: hidden;
         }
 
+        .modal-iframe-inner.scroll-deep {
+          height: 2400px;
+        }
+
         .modal-iframe-scroll {
           animation: scrollPreviewModal 28s ease-in-out infinite;
+        }
+
+        .modal-iframe-scroll.scroll-deep {
+          animation: scrollPreviewModalDeep 28s ease-in-out infinite;
         }
 
         @keyframes scrollPreviewModal {
           0%, 10% { transform: scale(0.82) translateY(-36px); }
           42%, 58% { transform: scale(0.82) translateY(-560px); }
           90%, 100% { transform: scale(0.82) translateY(-36px); }
+        }
+
+        @keyframes scrollPreviewModalDeep {
+          0%, 8% { transform: scale(0.82) translateY(-36px); }
+          45%, 55% { transform: scale(0.82) translateY(-2100px); }
+          92%, 100% { transform: scale(0.82) translateY(-36px); }
         }
 
         .modal-iframe-inner iframe {
@@ -648,7 +685,7 @@ border-color 0.25s ease;
                   </div>
                   {project.url && project.url !== "#" && project.detail ? (
                     <div className="project-iframe-wrapper">
-                      <div className="project-iframe-inner">
+                      <div className={`project-iframe-inner ${project.deepScroll ? "scroll-deep" : ""}`}>
                         <iframe
                           src={project.url}
                           title={project.title}
@@ -707,7 +744,7 @@ Date().getFullYear()}</span>
             </div>
             {modal.url && modal.url !== "#" ? (
               <div className="modal-iframe-wrapper">
-                <div className="modal-iframe-inner modal-iframe-scroll">
+                <div className={`modal-iframe-inner modal-iframe-scroll ${modal.deepScroll ? "scroll-deep" : ""}`}>
                   <iframe
                     src={modal.url}
                     title={modal.title}
