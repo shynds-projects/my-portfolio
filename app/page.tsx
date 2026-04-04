@@ -318,9 +318,10 @@ border-color 0.25s ease;
         }
 
         .project-iframe-inner.wide-preview {
-          width: 900px;
-          height: 2400px;
-          transform: scale(0.34) translateY(-20px);
+          width: 1100px;
+          height: 1600px;
+          transform: scale(0.28) translateY(0px);
+          transform-origin: top center;
           animation: scrollPreviewWide 24s ease-in-out infinite;
         }
 
@@ -337,9 +338,9 @@ border-color 0.25s ease;
         }
 
         @keyframes scrollPreviewWide {
-          0%, 8% { transform: scale(0.34) translateY(-20px); }
-          45%, 55% { transform: scale(0.34) translateY(-1800px); }
-          92%, 100% { transform: scale(0.34) translateY(-20px); }
+          0%, 8% { transform: scale(0.28) translateY(0px); }
+          45%, 55% { transform: scale(0.28) translateY(-1000px); }
+          92%, 100% { transform: scale(0.28) translateY(0px); }
         }
 
         .project-iframe-inner iframe {
@@ -551,9 +552,10 @@ border-color 0.25s ease;
         }
 
         .modal-iframe-inner.wide-preview {
-          width: 900px;
-          height: 2400px;
-          transform: scale(0.7) translateY(-20px);
+          width: 1100px;
+          height: 1600px;
+          transform: scale(0.58) translateY(0px);
+          transform-origin: top center;
         }
 
         .modal-iframe-scroll {
@@ -581,9 +583,9 @@ border-color 0.25s ease;
         }
 
         @keyframes scrollPreviewModalWide {
-          0%, 8% { transform: scale(0.7) translateY(-20px); }
-          45%, 55% { transform: scale(0.7) translateY(-1800px); }
-          92%, 100% { transform: scale(0.7) translateY(-20px); }
+          0%, 8% { transform: scale(0.58) translateY(0px); }
+          45%, 55% { transform: scale(0.58) translateY(-1000px); }
+          92%, 100% { transform: scale(0.58) translateY(0px); }
         }
 
         .modal-iframe-inner iframe {
