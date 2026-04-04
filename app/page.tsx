@@ -11,6 +11,7 @@ const projects = [
     url: "https://spotted-nyc.vercel.app/",
     emoji: "✦",
     deepScroll: false,
+    widePreview: false,
     detail: {
       screenshot: "/spotted-nyc-hero.png",
       overview: "spotted.nyc scrapes celebrity sighting posts from Reddit (r/DeuxMoi), uses Claude AI to extract the restaurant and celebrity mentioned, then surfaces a live feed of where celebs have been spotted around New York City.",
@@ -32,6 +33,7 @@ const projects = [
     url: "https://fund-base.vercel.app/company/figma",
     emoji: "✦",
     deepScroll: true,
+    widePreview: false,
     detail: {
       screenshot: null,
       overview: "fund.base is a free startup intelligence platform that lets you search and explore VC-backed companies. It uses AI to surface company profiles, funding data, founder bios, and organizational culture insights — all without a paid subscription.",
@@ -51,6 +53,7 @@ const projects = [
     url: "https://pulse-two-tau.vercel.app/week",
     emoji: "✦",
     deepScroll: true,
+    widePreview: true,
     detail: {
       screenshot: null,
       overview: "Pulse curates everything you need to know each week across 9 categories — sports, politics, entertainment, tech, culture, and more. It uses Claude AI to summarize and surface what people are talking about, so you never miss a beat.",
@@ -314,6 +317,13 @@ border-color 0.25s ease;
           animation: scrollPreviewDeep 24s ease-in-out infinite;
         }
 
+        .project-iframe-inner.wide-preview {
+          width: 900px;
+          height: 2400px;
+          transform: scale(0.34) translateY(-20px);
+          animation: scrollPreviewWide 24s ease-in-out infinite;
+        }
+
         @keyframes scrollPreview {
           0%, 10% { transform: scale(0.82) translateY(-36px); }
           42%, 58% { transform: scale(0.82) translateY(-560px); }
@@ -326,10 +336,20 @@ border-color 0.25s ease;
           92%, 100% { transform: scale(0.82) translateY(-36px); }
         }
 
+        @keyframes scrollPreviewWide {
+          0%, 8% { transform: scale(0.34) translateY(-20px); }
+          45%, 55% { transform: scale(0.34) translateY(-1800px); }
+          92%, 100% { transform: scale(0.34) translateY(-20px); }
+        }
+
         .project-iframe-inner iframe {
           width: calc(100% + 40px);
           height: 100%;
           border: none;
+        }
+
+        .project-iframe-inner.wide-preview iframe {
+          width: 100%;
         }
 
         .project-card::before {
@@ -530,12 +550,22 @@ border-color 0.25s ease;
           height: 2400px;
         }
 
+        .modal-iframe-inner.wide-preview {
+          width: 900px;
+          height: 2400px;
+          transform: scale(0.7) translateY(-20px);
+        }
+
         .modal-iframe-scroll {
           animation: scrollPreviewModal 28s ease-in-out infinite;
         }
 
         .modal-iframe-scroll.scroll-deep {
           animation: scrollPreviewModalDeep 28s ease-in-out infinite;
+        }
+
+        .modal-iframe-scroll.wide-preview {
+          animation: scrollPreviewModalWide 28s ease-in-out infinite;
         }
 
         @keyframes scrollPreviewModal {
@@ -550,10 +580,20 @@ border-color 0.25s ease;
           92%, 100% { transform: scale(0.82) translateY(-36px); }
         }
 
+        @keyframes scrollPreviewModalWide {
+          0%, 8% { transform: scale(0.7) translateY(-20px); }
+          45%, 55% { transform: scale(0.7) translateY(-1800px); }
+          92%, 100% { transform: scale(0.7) translateY(-20px); }
+        }
+
         .modal-iframe-inner iframe {
           width: calc(100% + 40px);
           height: 100%;
           border: none;
+        }
+
+        .modal-iframe-inner.wide-preview iframe {
+          width: 100%;
         }
 
         .modal-body {
@@ -695,7 +735,7 @@ border-color 0.25s ease;
                   </div>
                   {project.url && project.url !== "#" && project.detail ? (
                     <div className="project-iframe-wrapper">
-                      <div className={`project-iframe-inner ${project.deepScroll ? "scroll-deep" : ""}`}>
+                      <div className={`project-iframe-inner ${project.widePreview ? "wide-preview" : project.deepScroll ? "scroll-deep" : ""}`}>
                         <iframe
                           src={project.url}
                           title={project.title}
@@ -754,7 +794,7 @@ Date().getFullYear()}</span>
             </div>
             {modal.url && modal.url !== "#" ? (
               <div className="modal-iframe-wrapper">
-                <div className={`modal-iframe-inner modal-iframe-scroll ${modal.deepScroll ? "scroll-deep" : ""}`}>
+                <div className={`modal-iframe-inner modal-iframe-scroll ${modal.widePreview ? "wide-preview" : modal.deepScroll ? "scroll-deep" : ""}`}>
                   <iframe
                     src={modal.url}
                     title={modal.title}
