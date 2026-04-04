@@ -45,13 +45,23 @@ const projects = [
   },
   {
     id: 3,
-    title: "Coming Soon",
-    description: "More to come here.",
-    tag: "In Progress",
-    url: "#",
+    title: "Pulse",
+    description: "A weekly news digest across sports, politics, entertainment, tech, and culture — powered by AI.",
+    tag: "Live",
+    url: "https://pulse-two-tau.vercel.app/",
     emoji: "✦",
-    deepScroll: false,
-    detail: null,
+    deepScroll: true,
+    detail: {
+      screenshot: null,
+      overview: "Pulse curates everything you need to know each week across 9 categories — sports, politics, entertainment, tech, culture, and more. It uses Claude AI to summarize and surface what people are talking about, so you never miss a beat.",
+      stack: [
+        { label: "Frontend", value: "Next.js + React" },
+        { label: "Styling", value: "Tailwind CSS" },
+        { label: "AI", value: "Claude (Anthropic) — content curation" },
+        { label: "Database", value: "Supabase (Postgres)" },
+        { label: "Hosting", value: "Vercel" },
+      ],
+    },
   },
 ];
 
