@@ -48,7 +48,7 @@ const projects = [
     title: "Pulse",
     description: "A weekly news digest across sports, politics, entertainment, tech, and culture — powered by AI.",
     tag: "Live",
-    url: "https://pulse-two-tau.vercel.app/",
+    url: "https://pulse-two-tau.vercel.app/week",
     emoji: "✦",
     deepScroll: true,
     detail: {
