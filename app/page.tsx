@@ -5,7 +5,7 @@ import { useState, useCallback } from "react";
 const projects = [
   {
     id: 1,
-    title: "Spotted NYC",
+    title: "spotted.nyc",
     description: "A celebrity sighting tracker for NYC restaurants, powered by Reddit and AI.",
     tag: "Live",
     url: "https://spotted-nyc.vercel.app/",
@@ -13,7 +13,7 @@ const projects = [
     deepScroll: false,
     detail: {
       screenshot: "/spotted-nyc-hero.png",
-      overview: "Spotted NYC scrapes celebrity sighting posts from Reddit (r/DeuxMoi), uses Claude AI to extract the restaurant and celebrity mentioned, then surfaces a live feed of where celebs have been spotted around New York City.",
+      overview: "spotted.nyc scrapes celebrity sighting posts from Reddit (r/DeuxMoi), uses Claude AI to extract the restaurant and celebrity mentioned, then surfaces a live feed of where celebs have been spotted around New York City.",
       stack: [
         { label: "Frontend", value: "React + Vite" },
         { label: "Backend", value: "Node.js + Express" },
