@@ -53,9 +53,9 @@ const projects = [
     url: "https://pulse-two-tau.vercel.app/week",
     emoji: "✦",
     deepScroll: true,
-    widePreview: true,
+    widePreview: false,
     detail: {
-      screenshot: null,
+      screenshot: "/pulse-hero.png",
       overview: "Pulse curates everything you need to know each week across 9 categories — sports, politics, entertainment, tech, culture, and more. It uses Claude AI to summarize and surface what people are talking about, so you never miss a beat.",
       stack: [
         { label: "Frontend", value: "Next.js + React" },
@@ -271,7 +271,7 @@ border-color 0.25s ease;
 
         .project-thumbnail {
           width: 100%;
-          height: 160px;
+          height: 240px;
           object-fit: cover;
           object-position: center top;
           display: block;
