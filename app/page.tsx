@@ -47,7 +47,7 @@ const projects = [
   },
   {
     id: 3,
-    title: "WHL Portal",
+    title: "whl portal",
     description: "A league portal for the Wharton Hockey League — standings, schedules, rosters, and more.",
     tag: "In Progress",
     url: "#",
@@ -291,10 +291,12 @@ border-color 0.25s ease;
         .project-thumbnail {
           width: 100%;
           height: 240px;
-          object-fit: cover;
-          object-position: center top;
+          object-fit: contain;
+          object-position: center center;
           display: block;
           border-bottom: 1px solid #ede5d8;
+          background: #f9f5f0;
+          padding: 12px;
         }
 
         .project-iframe-wrapper {
