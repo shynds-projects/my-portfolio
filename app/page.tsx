@@ -47,7 +47,26 @@ const projects = [
   },
   {
     id: 3,
-    title: "Pulse",
+    title: "WHL Portal",
+    description: "A league portal for the Wharton Hockey League — standings, schedules, rosters, and more.",
+    tag: "In Progress",
+    url: "#",
+    emoji: "✦",
+    deepScroll: false,
+    widePreview: false,
+    detail: {
+      screenshot: "/whl-portal-hero.png",
+      overview: "WHL Portal is a full-featured league hub for the Wharton Hockey League's 25-26 season. It tracks team standings, game schedules, rosters, events, and merch — giving players and fans a single place to follow the action.",
+      stack: [
+        { label: "Frontend", value: "Next.js + React" },
+        { label: "Styling", value: "Tailwind CSS" },
+        { label: "Hosting", value: "Vercel (coming soon)" },
+      ],
+    },
+  },
+  {
+    id: 4,
+    title: "pulse",
     description: "A weekly news digest across sports, politics, entertainment, tech, and culture — powered by AI.",
     tag: "Live",
     url: "https://pulse-two-tau.vercel.app/week",
@@ -56,7 +75,7 @@ const projects = [
     widePreview: false,
     detail: {
       screenshot: "/pulse-hero.png",
-      overview: "Pulse curates everything you need to know each week across 9 categories — sports, politics, entertainment, tech, culture, and more. It uses Claude AI to summarize and surface what people are talking about, so you never miss a beat.",
+      overview: "pulse curates everything you need to know each week across 9 categories — sports, politics, entertainment, tech, culture, and more. It uses Claude AI to summarize and surface what people are talking about, so you never miss a beat.",
       stack: [
         { label: "Frontend", value: "Next.js + React" },
         { label: "Styling", value: "Tailwind CSS" },
